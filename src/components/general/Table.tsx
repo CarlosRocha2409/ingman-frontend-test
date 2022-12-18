@@ -39,7 +39,17 @@ export default function GeneralTable({
   children,
 }: IGeneralTableProps) {
   return (
-    <TableContainer component={Paper} sx={{ borderRadius: "20px" }}>
+    <TableContainer
+      component={Paper}
+      sx={{
+        borderRadius: "20px",
+        maxWidth: {
+          xs: "300px",
+          md: "100%",
+        },
+        minWidth: "300px",
+      }}
+    >
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>

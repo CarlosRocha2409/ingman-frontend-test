@@ -27,8 +27,26 @@ export default function ReceiptDetailHome() {
               margin: "10px 0",
             }}
           >
-            <Typography variant="h4">User: {data.user.fullName}</Typography>
-            <Typography variant="h4">Receipt N{data.id}</Typography>
+            <Typography
+              sx={{
+                typography: {
+                  xs: "h6",
+                  md: "h4",
+                },
+              }}
+            >
+              User: {data.user.fullName}
+            </Typography>
+            <Typography
+              sx={{
+                typography: {
+                  xs: "h6",
+                  md: "h4",
+                },
+              }}
+            >
+              Receipt N{data.id}
+            </Typography>
           </Box>
 
           <Divider />
@@ -40,7 +58,14 @@ export default function ReceiptDetailHome() {
               margin: "20px 0",
             }}
           >
-            <Typography variant="h3">
+            <Typography
+              sx={{
+                typography: {
+                  xs: "h5",
+                  md: "h4",
+                },
+              }}
+            >
               Date: {new Date(data.created_at).toLocaleDateString()}
             </Typography>
           </Box>
@@ -81,9 +106,35 @@ export default function ReceiptDetailHome() {
             }}
           >
             <div>
-              <Typography variant="h6">Subtotal: {data.subtotal}</Typography>
-              <Typography variant="h6">Tax: {data.taxtPercentage}</Typography>
-              <Typography variant="h6" fontWeight={"bold"}>
+              <Typography
+                sx={{
+                  typography: {
+                    xs: "subtitle1",
+                    md: "h6",
+                  },
+                }}
+              >
+                Subtotal: {data.subtotal.toFixed(2)}
+              </Typography>
+              <Typography
+                sx={{
+                  typography: {
+                    xs: "subtitle1",
+                    md: "h6",
+                  },
+                }}
+              >
+                Tax: {data.taxtPercentage}
+              </Typography>
+              <Typography
+                sx={{
+                  typography: {
+                    xs: "h5",
+                    md: "h6",
+                  },
+                }}
+                fontWeight={"bold"}
+              >
                 Total: {data.total}
               </Typography>
             </div>
