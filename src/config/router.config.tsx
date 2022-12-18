@@ -4,6 +4,7 @@ import NewReceiptPage from "../page/NewReceipt.page";
 import { ProductsPage } from "../page/Products.page";
 import ReceiptDetailPage from "../page/ReceiptDetail.page";
 import ReceiptsPage from "../page/Receipts.page";
+import UsersPage from "../page/Users.page";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,14 @@ export const router = createBrowserRouter([
     element: (
       <Layout>
         <ProductsPage />
+      </Layout>
+    ),
+  },
+  {
+    path: "/users",
+    element: (
+      <Layout>
+        <UsersPage />
       </Layout>
     ),
   },

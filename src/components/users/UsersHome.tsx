@@ -3,16 +3,15 @@ import {
   CssBaseline,
   styled,
   TableBody,
+  TableCell,
+  tableCellClasses,
   TableFooter,
   TablePagination,
   TableRow,
 } from "@mui/material";
-import useGetReceipts from "../../hooks/useGetReceipts";
-import GeneralTable from "../general/Table";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { useState } from "react";
-import CreateReceiptBtn from "./CreateReceiptBtn";
-import { useNavigate } from "react-router-dom";
+import useGetUsers from "../../hooks/useGetUsers";
+import GeneralTable from "../general/Table";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -23,25 +22,17 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontSize: 14,
   },
 }));
-
-const receiptsHeaders = ["id", "user", "subtotal", "tax", "total"];
-
-export default function ReceiptsHome() {
+export default function UsersHome() {
   const [page, setPage] = useState<number>(1);
-  const navigate = useNavigate();
 
-  const { data, isLoading } = useGetReceipts({
+  const { data, isLoading } = useGetUsers({
     page,
   });
+
   const handlePageChange = (p: number) => {
     if (p + 1 < 1) return;
     setPage(p + 1);
   };
-
-  function handleReceiptNavigate(id: number) {
-    navigate(`/receipts/${id}`);
-  }
-
   return (
     <>
       <CssBaseline />
@@ -51,29 +42,21 @@ export default function ReceiptsHome() {
           p: 3,
         }}
       >
-        <CreateReceiptBtn />
         {!isLoading && data.items && (
-          <GeneralTable headers={receiptsHeaders}>
+          <GeneralTable headers={["First Name", "Last Name", "email"]}>
             <TableBody>
-              {data.items.map((receipt) => (
+              {data.items.map((user) => (
                 <TableRow
                   hover
                   sx={{
                     cursor: "pointer",
                   }}
-                  onClick={() => handleReceiptNavigate(receipt.id)}
                 >
-                  <StyledTableCell align="left">{receipt.id}</StyledTableCell>
+                  <StyledTableCell align="left">{user.name}</StyledTableCell>
                   <StyledTableCell align="left">
-                    {receipt.user && receipt.user.fullName}
+                    {user.lastname}
                   </StyledTableCell>
-                  <StyledTableCell align="left">
-                    {receipt.subtotal}
-                  </StyledTableCell>
-                  <StyledTableCell align="left">{receipt.tax}</StyledTableCell>
-                  <StyledTableCell align="left">
-                    {receipt.total}
-                  </StyledTableCell>
+                  <StyledTableCell align="left">{user.email}</StyledTableCell>
                 </TableRow>
               ))}
             </TableBody>
