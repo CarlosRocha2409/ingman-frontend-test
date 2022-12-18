@@ -11,7 +11,7 @@ import useGetReceipts from "../../hooks/useGetReceipts";
 import GeneralTable from "../general/Table";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { useState } from "react";
-import CreateReceipt from "./CreateReceipt";
+import CreateReceiptBtn from "./CreateReceiptBtn";
 import { useNavigate } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -51,8 +51,8 @@ export default function ReceiptsHome() {
           p: 3,
         }}
       >
-        <CreateReceipt />
-        {!isLoading && (
+        <CreateReceiptBtn />
+        {!isLoading && data.items && (
           <GeneralTable headers={receiptsHeaders}>
             <TableBody>
               {data.items.map((receipt) => (

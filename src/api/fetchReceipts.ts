@@ -8,7 +8,6 @@ export default async function fetchReceipts(page = 1) {
       },
     })
     .then(({ data }) => {
-      console.log(data);
       return data;
     });
 }

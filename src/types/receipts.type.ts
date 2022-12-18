@@ -13,6 +13,11 @@ export interface IReceiptDetail {
   taxtPercentage: string;
 }
 
+export interface IReceiptDetailInput {
+  product: IProduct;
+  quantity: number;
+}
+
 export interface IReceipt {
   id: number;
   details: IReceiptDetail[];
